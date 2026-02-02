@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grocery List Manager</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🛒 Bawa's Grocery List Manager</h1>
+        <p>Manage your grocery shopping list</p>
+      </header>
+
+      <div class="add-section">
+        <h2>Add New Item</h2>
+        <form id="groceryForm">
+          <div class="form-row">
+            <input type="text" id="itemName" placeholder="Item name" required />
+            <input
+              type="number"
+              id="itemQuantity"
+              placeholder="Quantity"
+              min="1"
+              value="1"
+              required
+            />
+            <select id="itemCategory">
+              <option value="Produce">Produce</option>
+              <option value="Dairy">Dairy</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Meat">Meat</option>
+              <option value="Pantry">Pantry</option>
+              <option value="Frozen">Frozen</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Other">Other</option>
+            </select>
+            <button type="submit" class="btn btn-add">Add Item</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="filter-section">
+        <button class="filter-btn active" data-filter="all">All Items</button>
+        <button class="filter-btn" data-filter="active">To Buy</button>
+        <button class="filter-btn" data-filter="purchased">Purchased</button>
+      </div>
+
+      <div class="grocery-list">
+        <h2>Grocery Items</h2>
+        <div id="groceryItems"></div>
+        <div id="emptyState" class="empty-state">
+          No items in your list. Add your first item above!
+        </div>
+      </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Item</h2>
+        <form id="editForm">
+          <input type="hidden" id="editId" />
+          <div class="form-group">
+            <label for="editName">Item Name:</label>
+            <input type="text" id="editName" required />
+          </div>
+          <div class="form-group">
+            <label for="editQuantity">Quantity:</label>
+            <input type="number" id="editQuantity" min="1" required />
+          </div>
+          <div class="form-group">
+            <label for="editCategory">Category:</label>
+            <select id="editCategory">
+              <option value="Produce">Produce</option>
+              <option value="Dairy">Dairy</option>
+              <option value="Bakery">Bakery</option>
+              <option value="Meat">Meat</option>
+              <option value="Pantry">Pantry</option>
+              <option value="Frozen">Frozen</option>
+              <option value="Beverages">Beverages</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-save">Save Changes</button>
+            <button
+              type="button"
+              class="btn btn-cancel"
+              onclick="closeEditModal()"
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
